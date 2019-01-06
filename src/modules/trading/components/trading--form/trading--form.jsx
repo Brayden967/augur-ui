@@ -27,6 +27,10 @@ import {
 } from "utils/format-number";
 import Checkbox from "src/modules/common/components/checkbox/checkbox";
 
+function redirectToDepositFundsPage() {
+  location.href = "#/deposit-funds";
+}
+
 class MarketTradingForm extends Component {
   static propTypes = {
     availableFunds: PropTypes.instanceOf(BigNumber).isRequired,
@@ -275,7 +279,9 @@ class MarketTradingForm extends Component {
         isOrderValid = false;
         errors = {
           ...errors,
-          [this.TRADE_MAX_COST]: ["You need more ETH to make this trade."]
+          [this.TRADE_MAX_COST]: [
+            <div onClick={redirectToDepositFundsPage}>You need more ETH to make this trade.</div>
+          ]
         };
         errorCount += 1;
       }
